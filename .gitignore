@@ -1,0 +1,40 @@
+﻿# Dependencias
+node_modules/
+
+# Build
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Ambiente local
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Arquivos de midia originais (estao em public/ ja)
+/ANIM SC 1/
+/ANIM SC 3/
+/ANIM TRANSIÇAO 2/
+/SITE ART/
+/ener 2/
+/css/
+/js/
+/scripts/
+/img/
+/SITE/
+/LOGO/
+/VID/
+/OBRAS REAIS EM CAMPO/
+
+# Video original nao otimizado (usamos o scrub)
+/public/video-fundo.mp4

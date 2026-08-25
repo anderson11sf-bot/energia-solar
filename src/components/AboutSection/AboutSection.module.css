@@ -1,0 +1,259 @@
+/* =========================================
+   ABOUT SECTION — Glassmorphism Premium
+   ========================================= */
+.sectionContainer {
+  position: relative;
+  padding: 6rem 1.5rem;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+/* ---- Coluna de Texto ---- */
+.textCol {
+  flex: 1 1 500px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem;
+  line-height: 1.2;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.lead strong {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.subTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 1.75rem 0 0.6rem;
+}
+
+.text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---- Lista de Stats ---- */
+.statsList {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.statsList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.statIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  border-radius: 50%;
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ---- Botões ---- */
+.buttonRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.btnWhatsApp,
+.btnInstagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.btnWhatsApp {
+  background: #25D366;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+}
+
+.btnInstagram {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  box-shadow: 0 4px 20px rgba(225, 48, 108, 0.35);
+}
+
+.btnWhatsApp:hover,
+.btnInstagram:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+/* ---- Coluna da Foto ---- */
+.photoCol {
+  flex: 0 0 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 6rem;
+}
+
+.photoFrame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 60px rgba(var(--accent-rgb, 248, 166, 0), 0.08);
+}
+
+.founderPhoto {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.photoOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.5rem 1.25rem;
+  background: linear-gradient(to top, rgba(5,5,5,0.9) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+}
+
+.founderBadge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---- Cards de Stats ---- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.statCard {
+  background: var(--glass-bg, rgba(255,255,255,0.04));
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---- Responsivo Mobile ---- */
+@media (max-width: 900px) {
+  .inner {
+    flex-direction: column-reverse;
+    gap: 3rem;
+  }
+
+  .photoCol {
+    flex: none;
+    width: 100%;
+    position: static;
+  }
+
+  .founderPhoto {
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionContainer {
+    padding: 4rem 1rem;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+  }
+
+  .btnWhatsApp,
+  .btnInstagram {
+    justify-content: center;
+    width: 100%;
+  }
+}
