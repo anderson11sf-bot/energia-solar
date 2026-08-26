@@ -9,6 +9,12 @@
   border-bottom: 1px solid transparent;
 }
 
+@media (max-width: 768px) {
+  .header {
+    position: absolute;
+  }
+}
+
 .scrolled {
   background: rgba(5, 5, 5, 0.85);
   backdrop-filter: blur(16px);
