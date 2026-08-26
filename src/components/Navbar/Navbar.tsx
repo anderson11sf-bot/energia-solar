@@ -24,8 +24,8 @@ export const Navbar: React.FC = () => {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
         <div className={styles.brand} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <img src="/logo/logo-emblem.png" alt="Souza Rodrigues" className={styles.logoImage} />
-          <span className={styles.brandText}>SOUZA RODRIGUES</span>
+          <img src="/logo/logo-nova.png" alt="Grupo Souza Rodrigues" className={styles.logoImage} />
+          <span className={styles.brandText}>GRUPO SOUZA RODRIGUES</span>
         </div>
 
         <nav className={styles.navLinks}>

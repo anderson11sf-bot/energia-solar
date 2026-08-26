@@ -4,6 +4,12 @@
   padding: 6rem 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .sectionContainer {
+    padding: 3rem 1.5rem;
+  }
+}
+
 .header {
   text-align: center;
   max-width: 650px;

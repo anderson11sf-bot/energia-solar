@@ -5,6 +5,8 @@ import { Environments } from './components/Environments/Environments';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider/BeforeAfterSlider';
 import { ProcessTimeline } from './components/ProcessTimeline/ProcessTimeline';
 import { PortfolioGallery } from './components/PortfolioGallery/PortfolioGallery';
+import { VSLSection } from './components/VSLSection/VSLSection';
+import { KitsFotovoltaicos } from './components/KitsFotovoltaicos/KitsFotovoltaicos';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import { AboutSection } from './components/AboutSection/AboutSection';
 import { Footer } from './components/Footer/Footer';
@@ -93,11 +95,13 @@ function App() {
       <div ref={mainContentRef} style={{ position: 'relative', zIndex: 5 }}>
         <Environments />
         <BeforeAfterSlider
-          beforeImage="/site/IMG-20260723-WA0033.jpg"
+          beforeImage="/site/placa-suja.jpg"
           afterImage="/obras/IMG-20260729-WA0064.jpg"
         />
         <ProcessTimeline />
+        <VSLSection />
         <PortfolioGallery />
+        <KitsFotovoltaicos />
         <ContactForm />
         <AboutSection />
         <Footer />

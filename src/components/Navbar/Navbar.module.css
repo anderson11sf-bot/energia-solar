@@ -36,7 +36,7 @@
 }
 
 .logoImage {
-  height: 42px;
+  height: 50px;
   width: auto;
   object-fit: contain;
   transform: scale(1.18);
@@ -46,7 +46,7 @@
 
 .brandText {
   font-family: var(--font-logo);
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.81rem, 1.08vw, 0.99rem);
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: 0.12em;
