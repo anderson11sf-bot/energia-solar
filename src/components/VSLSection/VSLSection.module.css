@@ -1,13 +1,13 @@
 /* ─── Seção ─── */
 .sectionContainer {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 6rem 1.5rem 2rem;
+  padding: 6rem 1.5rem 3rem;
 }
 
 @media (max-width: 768px) {
   .sectionContainer {
-    padding: 3rem 1.5rem 1rem;
+    padding: 3rem 1rem 2rem;
   }
 }
 
@@ -20,117 +20,247 @@
 
 .badge {
   display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent-color);
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-color, #f59e0b);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
 
 .title {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text-primary, #f1f5f9);
+  line-height: 1.2;
 }
 
-/* ─── Carrossel externo (botões + vídeo) ─── */
-.carouselOuter {
+/* ─── Carousel (seta + player + seta) ─── */
+.carousel {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
 }
 
-/* ─── Wrapper do vídeo ─── */
-.videoWrapper {
+/* ─── Container externo do player (limita largura) ─── */
+.playerOuter {
   flex: 1;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.15);
-  background: #000;
-  aspect-ratio: 9 / 16;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  max-width: 400px;
-  position: relative;
+  max-width: 380px;
 }
 
-/* Animações de saída para slide */
+@media (max-width: 600px) {
+  .playerOuter {
+    max-width: 100%;
+  }
+  .carousel {
+    gap: 0.4rem;
+  }
+}
+
+/* ─── Wrapper com transição ─── */
+.playerWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0a0a0a;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(245, 158, 11, 0.12);
+  cursor: pointer;
+  transition: opacity 0.38s ease, transform 0.38s ease;
+}
+
+/* Animações de slide */
 .slideOutLeft {
-  transform: translateX(-60px);
   opacity: 0;
+  transform: translateX(-40px);
 }
 
 .slideOutRight {
-  transform: translateX(60px);
   opacity: 0;
+  transform: translateX(40px);
 }
 
-@media (max-width: 768px) {
-  .videoWrapper {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .carouselOuter {
-    gap: 0.5rem;
-  }
-}
-
-/* ─── Player ─── */
-.videoPlayer {
+/* ─── Vídeo ─── */
+.video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* ─── Botões de navegação ─── */
-.navBtn {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+/* ─── Botão de play/pause (overlay central) ─── */
+.playBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  border: 2px solid var(--accent-color, #f59e0b);
-  background: rgba(245, 158, 11, 0.1);
-  color: var(--accent-color, #f59e0b);
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
+  border: none;
+  background: rgba(245, 158, 11, 0.92);
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.5);
+  pointer-events: auto;
 }
 
-.navBtn:hover {
-  background: rgba(245, 158, 11, 0.25);
+.playBtn svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 3px; /* centraliza visualmente o triângulo */
+}
+
+.playBtn:hover {
+  background: #fbbf24;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* Esconde o botão de play quando está tocando (mostra no hover) */
+.playBtnHide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.playerWrap:hover .playBtnHide {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ─── Label do vídeo (no topo) ─── */
+.videoLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  z-index: 8;
+  pointer-events: none;
+}
+
+/* ─── Barra de progresso (na base) ─── */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  z-index: 10;
+  transition: height 0.2s ease;
+}
+
+.playerWrap:hover .progressBar {
+  height: 6px;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent-color, #f59e0b);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+}
+
+/* ─── Skeleton / placeholder ─── */
+.skeleton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+}
+
+.skeletonIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.15);
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(245, 158, 11, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.skeletonIcon svg {
+  width: 22px;
+  height: 22px;
+  margin-left: 3px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+/* ─── Setas de navegação ─── */
+.arrow {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.08);
+  color: var(--accent-color, #f59e0b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.arrow:hover {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: var(--accent-color, #f59e0b);
   transform: scale(1.1);
-  box-shadow: 0 0 18px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);
 }
 
-.navBtn:active {
-  transform: scale(0.95);
+.arrow:active {
+  transform: scale(0.94);
 }
 
 @media (max-width: 480px) {
-  .navBtn {
+  .arrow {
     width: 36px;
     height: 36px;
-    font-size: 1.5rem;
+  }
+  .arrow svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
-/* ─── Dots indicadores ─── */
+/* ─── Dots ─── */
 .dots {
   display: flex;
   justify-content: center;
@@ -139,18 +269,27 @@
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(245, 158, 11, 0.3);
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: background 0.25s ease, transform 0.25s ease;
+  background: rgba(245, 158, 11, 0.25);
+  transition: background 0.25s, transform 0.25s;
 }
 
 .dotActive {
   background: var(--accent-color, #f59e0b);
-  transform: scale(1.3);
-  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+/* ─── Contador ─── */
+.counter {
+  text-align: center;
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.1em;
 }
