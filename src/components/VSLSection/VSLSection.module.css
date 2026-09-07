@@ -1,3 +1,4 @@
+/* ─── Seção ─── */
 .sectionContainer {
   max-width: 1200px;
   margin: 0 auto;
@@ -10,6 +11,7 @@
   }
 }
 
+/* ─── Cabeçalho ─── */
 .header {
   text-align: center;
   max-width: 700px;
@@ -33,29 +35,122 @@
   margin-bottom: 0.75rem;
 }
 
-.videoWrapper {
-  max-width: 700px;
+/* ─── Carrossel externo (botões + vídeo) ─── */
+.carouselOuter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 800px;
   margin: 0 auto;
+}
+
+/* ─── Wrapper do vídeo ─── */
+.videoWrapper {
+  flex: 1;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--glass-border);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.15);
   background: #000;
-  aspect-ratio: 16 / 9; /* Padrão, mude para 9/16 se for vertical */
+  aspect-ratio: 9 / 16;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  max-width: 400px;
+  position: relative;
+}
+
+/* Animações de saída para slide */
+.slideOutLeft {
+  transform: translateX(-60px);
+  opacity: 0;
+}
+
+.slideOutRight {
+  transform: translateX(60px);
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
   .videoWrapper {
     width: 100%;
-    /* O padding lateral já é dado pela sectionContainer */
+    max-width: 100%;
+  }
+
+  .carouselOuter {
+    gap: 0.5rem;
   }
 }
 
+/* ─── Player ─── */
 .videoPlayer {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+/* ─── Botões de navegação ─── */
+.navBtn {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color, #f59e0b);
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent-color, #f59e0b);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.navBtn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.4);
+}
+
+.navBtn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 480px) {
+  .navBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+}
+
+/* ─── Dots indicadores ─── */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dotActive {
+  background: var(--accent-color, #f59e0b);
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
 }
