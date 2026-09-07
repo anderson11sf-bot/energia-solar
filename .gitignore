@@ -1,8 +1,12 @@
-﻿# Dependencias
+# Dependencias
 node_modules/
 
 # Build
 dist/
+
+# Versao Hostinger (artefato local, nao vai pro git)
+versao-hostinger/
+versao-hostinger.zip
 
 # Logs
 *.log
